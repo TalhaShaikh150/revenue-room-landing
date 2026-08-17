@@ -57,11 +57,10 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-            padding: 16px 20px;
+            padding: 12px 16px;
             border-radius: 12px;
             border: 1px solid #2a2a2c;
             transition: all 0.2s ease;
-            margin-bottom: 12px;
             background: #1e1e20;
         }
 
@@ -178,11 +177,11 @@
     <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-lime opacity-[0.03] blur-[100px] pointer-events-none"></div>
     <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-brand-lime opacity-[0.02] blur-[100px] pointer-events-none"></div>
 
-    <div id="main-content" class="max-w-4xl w-full mx-auto space-y-12 sm:space-y-16 z-10 animate-fade-up">
+    <div id="main-content" class="max-w-4xl w-full mx-auto space-y-6 sm:space-y-8 z-10 animate-fade-up">
         
         <!-- Header Section -->
-        <div class="text-center space-y-8">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+        <div class="text-center space-y-5">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
                 Everything a $5,000/Month Agency Does, <br class="hidden lg:block" />
                 <span class="text-brand-lime inline-block mt-2">For $100 a Week</span>
             </h1>
@@ -210,17 +209,17 @@
         </div>
 
         <!-- Form Card Section -->
-        <div class="bg-brand-card border border-brand-border rounded-[24px] shadow-2xl p-6 sm:p-10 lg:p-12 max-w-2xl mx-auto w-full relative overflow-hidden">
+        <div class="bg-brand-card border border-brand-border rounded-[24px] shadow-2xl p-5 sm:p-8 max-w-2xl mx-auto w-full relative overflow-hidden">
             <!-- Subtle gradient background effect -->
             <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-lime to-transparent opacity-50"></div>
             
-            <form id="onboardingForm" class="flex flex-col h-full min-h-[420px]">
+            <form id="onboardingForm" class="flex flex-col h-full min-h-[350px]">
                 <!-- Step 1 -->
                 <div id="step-1" class="flex flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left">Which best matches your business type?</h2>
+                    <div class="mb-6">
+                        <h2 class="text-xl sm:text-2xl font-semibold mb-5 text-white tracking-tight text-center sm:text-left">Which best matches your business type?</h2>
                         
-                        <div class="space-y-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <label class="radio-container">
                                 <input type="radio" name="businessType" value="Local service business" checked>
                                 <span class="checkmark"></span>
@@ -265,8 +264,8 @@
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-end">
-                        <button type="button" id="nextBtn" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto">
+                    <div class="mt-auto pt-6 border-t border-brand-border flex justify-end">
+                        <button type="button" id="nextBtn" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-3 px-8 rounded-xl w-full sm:w-auto">
                             NEXT
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
@@ -275,10 +274,10 @@
 
                 <!-- Step 2 -->
                 <div id="step-2" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">Are you in a position to invest at least $30/day into Facebook and Instagram ads to increase your sales?</h2>
+                    <div class="mb-6">
+                        <h2 class="text-xl sm:text-2xl font-semibold mb-5 text-white tracking-tight text-center sm:text-left leading-snug">Are you in a position to invest at least $30/day into Facebook and Instagram ads to increase your sales?</h2>
                         
-                        <div class="space-y-3">
+                        <div class="flex flex-col space-y-3">
                             <label class="radio-container">
                                 <input type="radio" name="adSpend" value="Yes" checked>
                                 <span class="checkmark"></span>
@@ -293,12 +292,12 @@
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                    <div class="mt-auto pt-6 border-t border-brand-border flex justify-between items-center">
                         <button type="button" id="backBtn" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             Back
                         </button>
-                        <button type="button" id="nextBtn2" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                        <button type="button" id="nextBtn2" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-3 px-8 rounded-xl w-full sm:w-auto ml-auto">
                             NEXT
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
@@ -307,10 +306,10 @@
 
                 <!-- Step 3 -->
                 <div id="step-3" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">Is your business currently operating?</h2>
+                    <div class="mb-6">
+                        <h2 class="text-xl sm:text-2xl font-semibold mb-5 text-white tracking-tight text-center sm:text-left leading-snug">Is your business currently operating?</h2>
                         
-                        <div class="space-y-3">
+                        <div class="flex flex-col space-y-3">
                             <div class="relative">
                                 <select id="operatingStatusInput" name="operatingStatus" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 appearance-none hover:border-[#8a8a8e] transition-colors cursor-pointer outline-none">
                                     <option value="" disabled selected>Select an option</option>
@@ -326,12 +325,12 @@
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                    <div class="mt-auto pt-6 border-t border-brand-border flex justify-between items-center">
                         <button type="button" id="backBtn3" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             Back
                         </button>
-                        <button type="button" id="nextBtn3" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                        <button type="button" id="nextBtn3" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-3 px-8 rounded-xl w-full sm:w-auto ml-auto">
                             NEXT
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
@@ -340,10 +339,10 @@
 
                 <!-- Step 4 -->
                 <div id="step-4" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">What has your business made in revenue in the last 30 days?</h2>
+                    <div class="mb-6">
+                        <h2 class="text-xl sm:text-2xl font-semibold mb-5 text-white tracking-tight text-center sm:text-left leading-snug">What has your business made in revenue in the last 30 days?</h2>
                         
-                        <div class="space-y-3">
+                        <div class="flex flex-col space-y-3">
                             <label class="radio-container">
                                 <input type="radio" name="revenue" value="$0 - $10K" checked>
                                 <span class="checkmark"></span>
@@ -370,12 +369,12 @@
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                    <div class="mt-auto pt-6 border-t border-brand-border flex justify-between items-center">
                         <button type="button" id="backBtn4" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             Back
                         </button>
-                        <button type="button" id="nextBtn4" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                        <button type="button" id="nextBtn4" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-3 px-8 rounded-xl w-full sm:w-auto ml-auto">
                             NEXT
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
@@ -384,21 +383,21 @@
 
                 <!-- Step 5 (Full Name) -->
                 <div id="step-5" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">What is your full name?</h2>
+                    <div class="mb-6">
+                        <h2 class="text-xl sm:text-2xl font-semibold mb-5 text-white tracking-tight text-center sm:text-left leading-snug">What is your full name?</h2>
                         
-                        <div class="space-y-3">
+                        <div class="flex flex-col space-y-3">
                             <input type="text" id="fullNameInput" name="fullName" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="e.g. John Doe" required>
                             <p id="error-fullNameInput" class="text-red-500 text-sm mt-2 hidden"></p>
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                    <div class="mt-auto pt-6 border-t border-brand-border flex justify-between items-center">
                         <button type="button" id="backBtn5" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             Back
                         </button>
-                        <button type="button" id="nextBtn5" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                        <button type="button" id="nextBtn5" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-3 px-8 rounded-xl w-full sm:w-auto ml-auto">
                             NEXT
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
@@ -407,21 +406,21 @@
 
                 <!-- Step 6 (Mobile Number) -->
                 <div id="step-6" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">Mobile Number *</h2>
+                    <div class="mb-6">
+                        <h2 class="text-xl sm:text-2xl font-semibold mb-5 text-white tracking-tight text-center sm:text-left leading-snug">Mobile Number *</h2>
                         
-                        <div class="space-y-3">
+                        <div class="flex flex-col space-y-3">
                             <input type="tel" id="mobileNumberInput" name="mobileNumber" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" required>
                             <p id="error-mobileNumberInput" class="text-red-500 text-sm mt-2 hidden"></p>
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                    <div class="mt-auto pt-6 border-t border-brand-border flex justify-between items-center">
                         <button type="button" id="backBtn6" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             Back
                         </button>
-                        <button type="button" id="nextBtn6" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                        <button type="button" id="nextBtn6" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-3 px-8 rounded-xl w-full sm:w-auto ml-auto">
                             NEXT
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
@@ -430,21 +429,21 @@
 
                 <!-- Step 7 (Email) -->
                 <div id="step-7" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">What is your best email address?</h2>
+                    <div class="mb-6">
+                        <h2 class="text-xl sm:text-2xl font-semibold mb-5 text-white tracking-tight text-center sm:text-left leading-snug">What is your best email address?</h2>
                         
-                        <div class="space-y-3">
+                        <div class="flex flex-col space-y-3">
                             <input type="email" id="emailInput" name="email" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="e.g. john@example.com" required>
                             <p id="error-emailInput" class="text-red-500 text-sm mt-2 hidden"></p>
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                    <div class="mt-auto pt-6 border-t border-brand-border flex justify-between items-center">
                         <button type="button" id="backBtn7" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             Back
                         </button>
-                        <button type="submit" id="submitFinal" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                        <button type="submit" id="submitFinal" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-3 px-8 rounded-xl w-full sm:w-auto ml-auto">
                             SUBMIT
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </button>
