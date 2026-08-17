@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Converting Landing Page</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Intl Tel Input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    
+    <!-- Calendly script -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xsm': '400px',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#0b0c0c',
+                            lime: '#d8fc4d',
+                            card: '#1e1e20',
+                            gray: '#8a8a8e',
+                            border: '#2a2a2c'
+                        }
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tight: '-0.02em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0c0c;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Radio Button Styles */
+        .radio-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2c;
+            transition: all 0.2s ease;
+            margin-bottom: 12px;
+            background: #1e1e20;
+        }
+
+        .radio-container:hover {
+            border-color: #8a8a8e;
+            background: #2a2a2c;
+        }
+
+        .radio-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            height: 22px;
+            width: 22px;
+            background-color: transparent;
+            border: 2px solid #8a8a8e;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            margin-right: 16px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .radio-container input:checked ~ .checkmark {
+            border-color: #d8fc4d;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d8fc4d;
+        }
+
+        .radio-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .radio-container input:checked ~ .label-text {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .label-text {
+            color: #8a8a8e;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .radio-container:has(input:checked) {
+            border-color: #d8fc4d;
+            background: rgba(216, 252, 77, 0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Button hover effect */
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 25px rgba(216, 252, 77, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Fade in animation for the card */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-up {
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Intl-tel-input Custom Dark Theme Overrides */
+        .iti { width: 100%; }
+        .iti__flag-container { padding: 4px; }
+        .iti__selected-flag { background-color: transparent !important; padding: 0 12px !important; border-right: 1px solid #2a2a2c; }
+        .iti__country-list { 
+            background-color: #1e1e20; 
+            border: 1px solid #2a2a2c; 
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 300px;
+        }
+        .iti__country-list .iti__country.iti__highlight { background-color: #2a2a2c; }
+        .iti__country-list .iti__country:hover { background-color: #2a2a2c; }
+        .iti__divider { border-bottom: 1px solid #2a2a2c; }
+        
+        /* Mobile Input Field specific styling */
+        #mobileNumberInput {
+            padding-left: 65px !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-brand-bg flex flex-col items-center justify-center p-4 sm:p-8 overflow-x-hidden">
+
+    <!-- Decorative background elements -->
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-lime opacity-[0.03] blur-[100px] pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-brand-lime opacity-[0.02] blur-[100px] pointer-events-none"></div>
+
+    <div id="main-content" class="max-w-4xl w-full mx-auto space-y-12 sm:space-y-16 z-10 animate-fade-up">
+        
+        <!-- Header Section -->
+        <div class="text-center space-y-8">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+                Everything a $5,000/Month Agency Does, <br class="hidden lg:block" />
+                <span class="text-brand-lime inline-block mt-2">For $100 a Week</span>
+            </h1>
+            
+            <div class="flex justify-center">
+                <ul class="flex flex-col sm:flex-row flex-wrap justify-center items-start sm:items-center gap-4 sm:gap-8 text-brand-gray font-medium text-base sm:text-lg">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-lime flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        <span>Cancel anytime.</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-lime flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        <span>Ads built for your business</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-lime flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        <span>Leads sent straight to you</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-lime flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        <span>No long contracts</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Form Card Section -->
+        <div class="bg-brand-card border border-brand-border rounded-[24px] shadow-2xl p-6 sm:p-10 lg:p-12 max-w-2xl mx-auto w-full relative overflow-hidden">
+            <!-- Subtle gradient background effect -->
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-lime to-transparent opacity-50"></div>
+            
+            <form id="onboardingForm" class="flex flex-col h-full min-h-[420px]">
+                <!-- Step 1 -->
+                <div id="step-1" class="flex flex-col h-full animate-fade-up w-full">
+                    <div class="mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left">Which best matches your business type?</h2>
+                        
+                        <div class="space-y-3">
+                            <label class="radio-container">
+                                <input type="radio" name="businessType" value="Local service business" checked>
+                                <span class="checkmark"></span>
+                                <span class="label-text">Local service business</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="businessType" value="Online coach or consultant">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Online coach or consultant</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="businessType" value="Agency or done-for-you service">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Agency or done-for-you service</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="businessType" value="Ecommerce or product business">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Ecommerce or product business</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="businessType" value="MLM">
+                                <span class="checkmark"></span>
+                                <span class="label-text">MLM</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="businessType" value="Low ticket product">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Low ticket product</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="businessType" value="Insurance Broker">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Insurance Broker</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-end">
+                        <button type="button" id="nextBtn" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto">
+                            NEXT
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="step-2" class="hidden flex-col h-full animate-fade-up w-full">
+                    <div class="mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">Are you in a position to invest at least $30/day into Facebook and Instagram ads to increase your sales?</h2>
+                        
+                        <div class="space-y-3">
+                            <label class="radio-container">
+                                <input type="radio" name="adSpend" value="Yes" checked>
+                                <span class="checkmark"></span>
+                                <span class="label-text">Yes</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="adSpend" value="No">
+                                <span class="checkmark"></span>
+                                <span class="label-text">No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                        <button type="button" id="backBtn" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            Back
+                        </button>
+                        <button type="button" id="nextBtn2" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                            NEXT
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="step-3" class="hidden flex-col h-full animate-fade-up w-full">
+                    <div class="mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">Is your business currently operating?</h2>
+                        
+                        <div class="space-y-3">
+                            <div class="relative">
+                                <select id="operatingStatusInput" name="operatingStatus" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 appearance-none hover:border-[#8a8a8e] transition-colors cursor-pointer outline-none">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No, we open soon">No, we open soon</option>
+                                    <option value="I have a business idea">I have a business idea</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-gray">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                            </div>
+                            <p id="error-operatingStatusInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                        <button type="button" id="backBtn3" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            Back
+                        </button>
+                        <button type="button" id="nextBtn3" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                            NEXT
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div id="step-4" class="hidden flex-col h-full animate-fade-up w-full">
+                    <div class="mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">What has your business made in revenue in the last 30 days?</h2>
+                        
+                        <div class="space-y-3">
+                            <label class="radio-container">
+                                <input type="radio" name="revenue" value="$0 - $10K" checked>
+                                <span class="checkmark"></span>
+                                <span class="label-text">$0 - $10K</span>
+                            </label>
+                            
+                            <label class="radio-container">
+                                <input type="radio" name="revenue" value="$10K - $30K">
+                                <span class="checkmark"></span>
+                                <span class="label-text">$10K - $30K</span>
+                            </label>
+
+                            <label class="radio-container">
+                                <input type="radio" name="revenue" value="$30K - $80K">
+                                <span class="checkmark"></span>
+                                <span class="label-text">$30K - $80K</span>
+                            </label>
+
+                            <label class="radio-container">
+                                <input type="radio" name="revenue" value="$80K+">
+                                <span class="checkmark"></span>
+                                <span class="label-text">$80K+</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                        <button type="button" id="backBtn4" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            Back
+                        </button>
+                        <button type="button" id="nextBtn4" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                            NEXT
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 5 (Full Name) -->
+                <div id="step-5" class="hidden flex-col h-full animate-fade-up w-full">
+                    <div class="mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">What is your full name?</h2>
+                        
+                        <div class="space-y-3">
+                            <input type="text" id="fullNameInput" name="fullName" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="e.g. John Doe" required>
+                            <p id="error-fullNameInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                        <button type="button" id="backBtn5" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            Back
+                        </button>
+                        <button type="button" id="nextBtn5" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                            NEXT
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 6 (Mobile Number) -->
+                <div id="step-6" class="hidden flex-col h-full animate-fade-up w-full">
+                    <div class="mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">Mobile Number *</h2>
+                        
+                        <div class="space-y-3">
+                            <input type="tel" id="mobileNumberInput" name="mobileNumber" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" required>
+                            <p id="error-mobileNumberInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                        <button type="button" id="backBtn6" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            Back
+                        </button>
+                        <button type="button" id="nextBtn6" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                            NEXT
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 7 (Email) -->
+                <div id="step-7" class="hidden flex-col h-full animate-fade-up w-full">
+                    <div class="mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-white tracking-tight text-center sm:text-left leading-snug">What is your best email address?</h2>
+                        
+                        <div class="space-y-3">
+                            <input type="email" id="emailInput" name="email" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="e.g. john@example.com" required>
+                            <p id="error-emailInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
+                        <button type="button" id="backBtn7" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            Back
+                        </button>
+                        <button type="submit" id="submitFinal" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
+                            SUBMIT
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rejection Step -->
+                <div id="step-rejection" class="hidden flex-col h-full justify-center items-center text-center py-8 animate-fade-up w-full">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 text-red-500 mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-4">We can't help you right now</h2>
+                    <p id="rejectionMessageText" class="text-brand-gray text-lg leading-relaxed max-w-lg mx-auto mb-8">
+                        Sorry we don't work with <span id="rejectedType" class="text-white font-semibold"></span> businesses. We have an agency website (<a href="https://revenueroomdigital.com.au/" class="text-brand-lime hover:underline" target="_blank">revenueroomdigital.com.au</a>) We wish you all the best!
+                    </p>
+                    <button type="button" id="backToStartBtn" class="text-brand-gray hover:text-white font-medium transition-colors">
+                        Start Over
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Success / Calendly View -->
+    <div id="success-view" class="hidden flex-col items-center w-full max-w-5xl mx-auto z-10 animate-fade-up mt-8 pb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight text-center mb-2 uppercase">Congratulations, you are qualified!</h2>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight text-center mb-10 uppercase">Your last step is to book a call with our team</h3>
+        
+        <div class="w-full bg-white rounded-xl overflow-hidden shadow-2xl h-[700px]">
+            <div id="calendly-embed" style="min-width:320px;height:100%;"></div>
+        </div>
+    </div>
+    
+    <!-- Intl Tel Input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const step3 = document.getElementById('step-3');
+            const step4 = document.getElementById('step-4');
+            const step5 = document.getElementById('step-5');
+            const step6 = document.getElementById('step-6');
+            const step7 = document.getElementById('step-7');
+            const stepRejection = document.getElementById('step-rejection');
+            
+            const nextBtn = document.getElementById('nextBtn');
+            const backBtn = document.getElementById('backBtn');
+            const nextBtn2 = document.getElementById('nextBtn2');
+            const backBtn3 = document.getElementById('backBtn3');
+            const nextBtn3 = document.getElementById('nextBtn3');
+            const backBtn4 = document.getElementById('backBtn4');
+            const nextBtn4 = document.getElementById('nextBtn4');
+            const backBtn5 = document.getElementById('backBtn5');
+            const nextBtn5 = document.getElementById('nextBtn5');
+            const backBtn6 = document.getElementById('backBtn6');
+            const nextBtn6 = document.getElementById('nextBtn6');
+            const backBtn7 = document.getElementById('backBtn7');
+            
+            const backToStartBtn = document.getElementById('backToStartBtn');
+            const rejectedTypeSpan = document.getElementById('rejectedType');
+
+            const submitFinal = document.getElementById('submitFinal');
+            const rejectionMessageText = document.getElementById('rejectionMessageText');
+            
+            const fullNameInput = document.getElementById('fullNameInput');
+            const emailInput = document.getElementById('emailInput');
+
+            // Initialize intlTelInput
+            const phoneInputField = document.querySelector("#mobileNumberInput");
+            const phoneInput = window.intlTelInput(phoneInputField, {
+                preferredCountries: ["us", "gb", "au", "pk"],
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+
+            const allowedBusinesses = [
+                'Local service business',
+                'Online coach or consultant',
+                'Agency or done-for-you service'
+            ];
+
+            const showInputError = (inputId, message) => {
+                const errorEl = document.getElementById(`error-${inputId}`);
+                const inputEl = document.getElementById(inputId);
+                if (errorEl) {
+                    errorEl.textContent = message;
+                    errorEl.classList.remove('hidden');
+                }
+                if (inputEl) {
+                    inputEl.classList.add('border-red-500');
+                    inputEl.classList.remove('border-[#2a2a2c]', 'hover:border-[#8a8a8e]');
+                }
+            };
+            
+            const clearInputErrors = () => {
+                const inputs = ['operatingStatusInput', 'fullNameInput', 'mobileNumberInput', 'emailInput'];
+                inputs.forEach(id => {
+                    const errorEl = document.getElementById(`error-${id}`);
+                    const inputEl = document.getElementById(id);
+                    if (errorEl) {
+                        errorEl.classList.add('hidden');
+                        errorEl.textContent = '';
+                    }
+                    if (inputEl) {
+                        inputEl.classList.remove('border-red-500');
+                        inputEl.classList.add('border-[#2a2a2c]', 'hover:border-[#8a8a8e]');
+                    }
+                });
+            };
+
+            const hideAllSteps = () => {
+                clearInputErrors();
+                const steps = [step1, step2, step3, step4, step5, step6, step7, stepRejection];
+                steps.forEach(step => {
+                    step.classList.remove('flex');
+                    step.classList.add('hidden');
+                });
+            };
+
+            const showRejection = (htmlMessage) => {
+                rejectionMessageText.innerHTML = htmlMessage;
+                hideAllSteps();
+                stepRejection.classList.remove('hidden');
+                stepRejection.classList.add('flex');
+            };
+
+            // Step 1 -> Step 2 or Rejection
+            nextBtn.addEventListener('click', () => {
+                const selectedBusiness = document.querySelector('input[name="businessType"]:checked').value;
+                
+                if (allowedBusinesses.includes(selectedBusiness)) {
+                    hideAllSteps();
+                    step2.classList.remove('hidden');
+                    step2.classList.add('flex');
+                } else {
+                    showRejection(`Sorry we don't work with <span class="text-white font-semibold">${selectedBusiness}</span> businesses. We have an agency website (<a href="https://revenueroomdigital.com.au/" class="text-brand-lime hover:underline" target="_blank">revenueroomdigital.com.au</a>) We wish you all the best!`);
+                }
+            });
+
+            // Step 2 Back
+            backBtn.addEventListener('click', () => {
+                hideAllSteps();
+                step1.classList.remove('hidden');
+                step1.classList.add('flex');
+            });
+
+            // Step 2 -> Step 3 or Back to Step 1
+            nextBtn2.addEventListener('click', () => {
+                const adSpend = document.querySelector('input[name="adSpend"]:checked').value;
+                
+                hideAllSteps();
+
+                if (adSpend === 'Yes') {
+                    step3.classList.remove('hidden');
+                    step3.classList.add('flex');
+                } else {
+                    // Go back to step 1
+                    step1.classList.remove('hidden');
+                    step1.classList.add('flex');
+                }
+            });
+            
+            // Step 3 Back
+            backBtn3.addEventListener('click', () => {
+                hideAllSteps();
+                step2.classList.remove('hidden');
+                step2.classList.add('flex');
+            });
+
+            // Step 3 -> Step 4 or Rejection
+            nextBtn3.addEventListener('click', () => {
+                clearInputErrors();
+                const selectElement = document.getElementById('operatingStatusInput');
+                const status = selectElement.value;
+                
+                if (!status) {
+                    showInputError('operatingStatusInput', "Please select an option.");
+                    return;
+                }
+                
+                if (status === 'No, we open soon') {
+                    showRejection("With your business not being open yet. Please come back to us when you are open. We can't help you right now.");
+                } else if (status === 'I have a business idea') {
+                    showRejection("We don't work with people who have a business idea. When your business is set up and you have clients. Come back to us");
+                } else {
+                    // It's 'Yes' - proceed to step 4
+                    hideAllSteps();
+                    step4.classList.remove('hidden');
+                    step4.classList.add('flex');
+                }
+            });
+
+            // Step 4 Back
+            backBtn4.addEventListener('click', () => {
+                hideAllSteps();
+                step3.classList.remove('hidden');
+                step3.classList.add('flex');
+            });
+
+            // Step 4 -> Step 5
+            nextBtn4.addEventListener('click', () => {
+                hideAllSteps();
+                step5.classList.remove('hidden');
+                step5.classList.add('flex');
+            });
+
+            // Step 5 Back
+            backBtn5.addEventListener('click', () => {
+                hideAllSteps();
+                step4.classList.remove('hidden');
+                step4.classList.add('flex');
+            });
+
+            // Step 5 -> Step 6
+            nextBtn5.addEventListener('click', () => {
+                clearInputErrors();
+                if (fullNameInput.value.trim() === '') {
+                    showInputError('fullNameInput', "Please enter your full name.");
+                    return;
+                }
+                hideAllSteps();
+                step6.classList.remove('hidden');
+                step6.classList.add('flex');
+            });
+
+            // Step 6 Back
+            backBtn6.addEventListener('click', () => {
+                hideAllSteps();
+                step5.classList.remove('hidden');
+                step5.classList.add('flex');
+            });
+
+            // Step 6 -> Step 7
+            nextBtn6.addEventListener('click', () => {
+                clearInputErrors();
+                if (!phoneInput.isValidNumber()) {
+                    showInputError('mobileNumberInput', "Please enter a valid phone number.");
+                    return;
+                }
+                hideAllSteps();
+                step7.classList.remove('hidden');
+                step7.classList.add('flex');
+            });
+
+            // Step 7 Back
+            backBtn7.addEventListener('click', () => {
+                hideAllSteps();
+                step6.classList.remove('hidden');
+                step6.classList.add('flex');
+            });
+
+            // Step 7 Submit (Final Submit)
+            submitFinal.addEventListener('click', () => {
+                document.getElementById('onboardingForm').dispatchEvent(new Event('submit'));
+            });
+
+            // Rejection Back
+            backToStartBtn.addEventListener('click', () => {
+                hideAllSteps();
+                step1.classList.remove('hidden');
+                step1.classList.add('flex');
+            });
+
+            // Prevent default form submission and transition to success view
+            document.getElementById('onboardingForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                clearInputErrors();
+                
+                // Final validation just in case
+                if (emailInput.value.trim() === '' || !emailInput.value.includes('@')) {
+                    showInputError('emailInput', "Please enter a valid email address.");
+                    return;
+                }
+
+                // Hide main wrapper and show Calendly UI
+                document.getElementById('main-content').classList.add('hidden');
+                
+                const successView = document.getElementById('success-view');
+                successView.classList.remove('hidden');
+                successView.classList.add('flex');
+                
+                // Dynamically initialize Calendly widget safely
+                if (window.Calendly) {
+                    window.Calendly.initInlineWidget({
+                        /* UPDATE THIS URL TO YOUR ACTUAL CALENDLY BOOKING LINK */
+                        url: 'https://calendly.com/revenueroomdigital',
+                        parentElement: document.getElementById('calendly-embed'),
+                        prefill: {
+                            name: fullNameInput.value,
+                            email: emailInput.value
+                        },
+                        utm: {}
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
