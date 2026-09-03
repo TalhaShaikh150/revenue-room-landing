@@ -12,8 +12,6 @@
     <!-- Intl Tel Input CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     
-    <!-- Calendly script -->
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +32,7 @@
                             card: '#1e1e20',
                             gray: '#8a8a8e',
                             border: '#2a2a2c'
-                        }
+                        }  
                     },
                     letterSpacing: {
                         tighter: '-0.04em',
@@ -46,7 +44,16 @@
     </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen bg-brand-bg flex flex-col items-center justify-center p-4 sm:p-8 overflow-x-hidden">
+<body class="min-h-screen bg-brand-bg flex flex-col items-center justify-center p-4 sm:p-8 overflow-x-hidden relative">
+
+    <!-- Video Background -->
+    <div class="fixed inset-0 w-full h-full z-[-1] overflow-hidden pointer-events-none">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 mix-blend-screen">
+            <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <!-- Gradient overlay to blend the video smoothly into the dark theme -->
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-bg/60 via-brand-bg/80 to-brand-bg"></div>
+    </div>
 
     <!-- Decorative background elements -->
     <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-lime opacity-[0.03] blur-[100px] pointer-events-none"></div>
@@ -56,6 +63,9 @@
         
         <!-- Header Section -->
         <div class="text-center space-y-4 sm:space-y-6">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-brand-lime/30 bg-brand-lime/10 text-brand-lime text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2 ">
+                The Agency That Never Sleeps
+            </div>
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] max-w-3xl mx-auto px-4">
                 Everything a $5,000/Month Agency Does,
                 <span class="text-brand-lime block mt-2">For $200 a week...</span>
@@ -129,23 +139,24 @@
                     </div>
                 </div>
 
-                <!-- Step 2 -->
+                <!-- Step 2 (Contact Info) -->
                 <div id="step-2" class="hidden flex-col h-full animate-fade-up w-full">
                     <div class="mb-10">
-                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">Are you in a position to invest at least $30/day into Facebook and Instagram ads to increase your sales?</h2>
+                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">Where should we send your leads?</h2>
                         
-                        <div class="space-y-3">
-                            <label class="radio-container">
-                                <input type="radio" name="adSpend" value="Yes" checked>
-                                <span class="checkmark"></span>
-                                <span class="label-text">Yes</span>
-                            </label>
-                            
-                            <label class="radio-container">
-                                <input type="radio" name="adSpend" value="No">
-                                <span class="checkmark"></span>
-                                <span class="label-text">No</span>
-                            </label>
+                        <div class="space-y-5">
+                            <div>
+                                <input type="text" id="fullNameInput" name="fullName" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="Full Name *" required>
+                                <p id="error-fullNameInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                            </div>
+                            <div>
+                                <input type="email" id="emailInput" name="email" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="Email Address *" required>
+                                <p id="error-emailInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                            </div>
+                            <div>
+                                <input type="tel" id="mobileNumberInput" name="mobileNumber" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" required>
+                                <p id="error-mobileNumberInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                            </div>
                         </div>
                     </div>
 
@@ -161,142 +172,32 @@
                     </div>
                 </div>
 
-                <!-- Step 3 -->
+                <!-- Step 3 (Best Time To Call) -->
                 <div id="step-3" class="hidden flex-col h-full animate-fade-up w-full">
                     <div class="mb-10">
-                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">Is your business currently operating?</h2>
+                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">What is the best time to call you?</h2>
                         
                         <div class="space-y-3">
-                            <div class="relative">
-                                <select id="operatingStatusInput" name="operatingStatus" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 appearance-none hover:border-[#8a8a8e] transition-colors cursor-pointer outline-none">
-                                    <option value="" disabled selected>Select an option</option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No, we open soon">No, we open soon</option>
-                                    <option value="I have a business idea">I have a business idea</option>
-                                </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-gray">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </div>
-                            </div>
-                            <p id="error-operatingStatusInput" class="text-red-500 text-sm mt-2 hidden"></p>
+                            <label class="radio-container">
+                                <input type="radio" name="bestTime" value="Morning (9AM - 12PM)" checked>
+                                <span class="checkmark"></span>
+                                <span class="label-text">Morning (9AM - 12PM)</span>
+                            </label>
+                            <label class="radio-container">
+                                <input type="radio" name="bestTime" value="Afternoon (12PM - 4PM)">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Afternoon (12PM - 4PM)</span>
+                            </label>
+                            <label class="radio-container">
+                                <input type="radio" name="bestTime" value="Evening (4PM - 7PM)">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Evening (4PM - 7PM)</span>
+                            </label>
                         </div>
                     </div>
 
                     <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
                         <button type="button" id="backBtn3" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                            Back
-                        </button>
-                        <button type="button" id="nextBtn3" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
-                            NEXT
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div id="step-4" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">What has your business made in revenue in the last 30 days?</h2>
-                        
-                        <div class="space-y-3">
-                            <label class="radio-container">
-                                <input type="radio" name="revenue" value="$0 - $10K" checked>
-                                <span class="checkmark"></span>
-                                <span class="label-text">$0 - $10K</span>
-                            </label>
-                            
-                            <label class="radio-container">
-                                <input type="radio" name="revenue" value="$10K - $30K">
-                                <span class="checkmark"></span>
-                                <span class="label-text">$10K - $30K</span>
-                            </label>
-
-                            <label class="radio-container">
-                                <input type="radio" name="revenue" value="$30K - $80K">
-                                <span class="checkmark"></span>
-                                <span class="label-text">$30K - $80K</span>
-                            </label>
-
-                            <label class="radio-container">
-                                <input type="radio" name="revenue" value="$80K+">
-                                <span class="checkmark"></span>
-                                <span class="label-text">$80K+</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
-                        <button type="button" id="backBtn4" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                            Back
-                        </button>
-                        <button type="button" id="nextBtn4" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
-                            NEXT
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 5 (Full Name) -->
-                <div id="step-5" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">What is your full name?</h2>
-                        
-                        <div class="space-y-3">
-                            <input type="text" id="fullNameInput" name="fullName" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="e.g. John Doe" required>
-                            <p id="error-fullNameInput" class="text-red-500 text-sm mt-2 hidden"></p>
-                        </div>
-                    </div>
-
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
-                        <button type="button" id="backBtn5" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                            Back
-                        </button>
-                        <button type="button" id="nextBtn5" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
-                            NEXT
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 6 (Mobile Number) -->
-                <div id="step-6" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">Mobile Number *</h2>
-                        
-                        <div class="space-y-3">
-                            <input type="tel" id="mobileNumberInput" name="mobileNumber" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" required>
-                            <p id="error-mobileNumberInput" class="text-red-500 text-sm mt-2 hidden"></p>
-                        </div>
-                    </div>
-
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
-                        <button type="button" id="backBtn6" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                            Back
-                        </button>
-                        <button type="button" id="nextBtn6" class="btn-primary flex items-center justify-center gap-2 bg-brand-lime text-brand-bg font-bold text-lg py-4 px-10 rounded-xl w-full sm:w-auto ml-auto">
-                            NEXT
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 7 (Email) -->
-                <div id="step-7" class="hidden flex-col h-full animate-fade-up w-full">
-                    <div class="mb-10">
-                        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-white tracking-tight text-center sm:text-left leading-snug">What is your best email address?</h2>
-                        
-                        <div class="space-y-3">
-                            <input type="email" id="emailInput" name="email" class="w-full bg-[#1e1e20] border border-[#2a2a2c] text-white text-lg rounded-xl focus:ring-[#d8fc4d] focus:border-[#d8fc4d] block p-4 outline-none transition-colors hover:border-[#8a8a8e]" placeholder="e.g. john@example.com" required>
-                            <p id="error-emailInput" class="text-red-500 text-sm mt-2 hidden"></p>
-                        </div>
-                    </div>
-
-                    <div class="mt-auto pt-8 border-t border-brand-border flex justify-between items-center">
-                        <button type="button" id="backBtn7" class="text-brand-gray hover:text-white font-medium flex items-center gap-2 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             Back
                         </button>
@@ -320,8 +221,16 @@
                         Start Over
                     </button>
                 </div>
-            </form>
-        </div>
+                    <!-- Success View (Inside Form) -->
+                    <div id="success-view" class="hidden flex-col h-full justify-center items-center text-center py-8 animate-fade-up w-full">
+                        <div class="w-20 h-20 bg-brand-lime/10 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-10 h-10 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white tracking-tight mb-4">Request Received</h2>
+                        <p class="text-brand-gray text-lg font-medium leading-relaxed max-w-sm mx-auto">Thank you! One of our growth specialists will be in touch with you shortly.</p>
+                    </div>
+                </form>
+            </div>
         
         <div class="flex justify-center mt-6">
             <div class="inline-block px-4 py-1.5 rounded-full border border-brand-lime/30 bg-brand-lime/10 text-brand-lime text-xs sm:text-sm font-semibold tracking-wide">
@@ -349,21 +258,169 @@
                 </ul>
             </div>
     </div>
-    
-    <!-- Success / Calendly View -->
-    <div id="success-view" class="hidden flex-col items-center w-full max-w-5xl mx-auto z-10 animate-fade-up mt-8 pb-16">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight text-center mb-2 uppercase">Congratulations, you are qualified!</h2>
-        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight text-center mb-10 uppercase">Your last step is to book a call with our team</h3>
+
+    <!-- NEW SECTIONS CONTAINER -->
+    <div class="w-full max-w-6xl mx-auto px-4 sm:px-8 py-24 space-y-32 z-10 relative">
         
-        <div class="w-full bg-white rounded-xl overflow-hidden shadow-2xl h-[700px]">
-            <div id="calendly-embed" style="min-width:320px;height:100%;"></div>
-        </div>
+        <!-- Services Section -->
+        <section id="services" class="space-y-12 animate-fade-up">
+            <div class="text-center space-y-4">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">What We Actually Do</h2>
+                <p class="text-brand-gray text-lg max-w-2xl mx-auto">We don't just run ads. We build the entire infrastructure you need to turn clicks into paying clients.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="bg-[#131314] border border-[#2a2a2c] rounded-2xl p-8 md:p-10 hover:-translate-y-1 hover:border-[#3a3a3c] hover:shadow-xl transition-all duration-300">
+                    <div class="mb-6 text-brand-lime">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Paid Advertising</h3>
+                    <p class="text-brand-gray leading-relaxed">High-converting Meta and Google ads built specifically for your business to drive qualified traffic.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-[#131314] border border-[#2a2a2c] rounded-2xl p-8 md:p-10 hover:-translate-y-1 hover:border-[#3a3a3c] hover:shadow-xl transition-all duration-300">
+                    <div class="mb-6 text-brand-lime">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Lead Generation</h3>
+                    <p class="text-brand-gray leading-relaxed">We capture high-intent leads and send them straight to your phone, ready to buy.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-[#131314] border border-[#2a2a2c] rounded-2xl p-8 md:p-10 hover:-translate-y-1 hover:border-[#3a3a3c] hover:shadow-xl transition-all duration-300">
+                    <div class="mb-6 text-brand-lime">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sales & CRM Systems</h3>
+                    <p class="text-brand-gray leading-relaxed">We build your follow-up automations so no lead ever slips through the cracks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section id="why-us" class="space-y-12 animate-fade-up">
+            <div class="text-center space-y-4">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">The Difference</h2>
+                <p class="text-brand-gray text-lg max-w-2xl mx-auto">Why 100+ businesses choose us over traditional expensive agencies.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <!-- Other Agencies Card -->
+                <div class="bg-[#131314] border border-[#2a2a2c] rounded-2xl p-8 md:p-10 relative overflow-hidden group hover:border-red-500/30 transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 space-y-8">
+                        <div class="flex items-center gap-4 border-b border-[#2a2a2c] pb-6">
+                            <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-300">Traditional Agencies</h3>
+                        </div>
+                        <ul class="space-y-5 text-brand-gray">
+                            <li class="flex items-center gap-4">
+                                <svg class="w-5 h-5 text-red-500/70 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> 
+                                <span class="leading-snug">Charge $3k-$5k/month retainers</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <svg class="w-5 h-5 text-red-500/70 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> 
+                                <span class="leading-snug">Lock you into 6-12 month contracts</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <svg class="w-5 h-5 text-red-500/70 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> 
+                                <span class="leading-snug">Slow response times (9-5 only)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Revenue Room Card -->
+                <div class="bg-[#131314] border border-brand-lime/20 rounded-2xl p-8 md:p-10 relative overflow-hidden  hover: hover:-translate-y-1 transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-lime/10 to-transparent opacity-50"></div>
+                    <div class="relative z-10 space-y-8">
+                        <div class="flex items-center gap-4 border-b border-brand-lime/20 pb-6">
+                            <div class="w-12 h-12 rounded-xl bg-brand-lime/20 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Revenue Room</h3>
+                        </div>
+                        <ul class="space-y-5 text-white font-medium">
+                            <li class="flex items-center gap-4">
+                                <div class="w-5 h-5 rounded-full bg-brand-lime/20 flex items-center justify-center shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="leading-snug">Flat $200 a week. No hidden fees.</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-5 h-5 rounded-full bg-brand-lime/20 flex items-center justify-center shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="leading-snug">Cancel anytime. Zero risk.</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-5 h-5 rounded-full bg-brand-lime/20 flex items-center justify-center shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="leading-snug">Australia's first 24/7 Agency</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How We Work Section -->
+        <section id="how-we-work" class="space-y-12 animate-fade-up">
+            <div class="text-center space-y-4">
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">How We Work</h2>
+                <p class="text-brand-gray text-lg max-w-2xl mx-auto">A seamless 4-step process designed to get you results fast.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                <!-- Connecting line for desktop -->
+                <div class="hidden md:block absolute top-[45px] left-[10%] right-[10%] h-[2px] bg-[#2a2a2c] z-0"></div>
+                
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#131314] border-2 border-brand-lime flex items-center justify-center text-xl font-bold text-brand-lime mb-6 ">1</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Discovery</h3>
+                    <p class="text-sm text-brand-gray">You complete the onboarding form to see if we're a good fit.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#131314] border-2 border-[#2a2a2c] flex items-center justify-center text-xl font-bold text-brand-gray mb-6 transition-colors duration-300 hover:border-brand-lime hover:text-brand-lime">2</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Build</h3>
+                    <p class="text-sm text-brand-gray">We build your ads, funnels, and CRM infrastructure in 24-48 hours.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#131314] border-2 border-[#2a2a2c] flex items-center justify-center text-xl font-bold text-brand-gray mb-6 transition-colors duration-300 hover:border-brand-lime hover:text-brand-lime">3</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Launch</h3>
+                    <p class="text-sm text-brand-gray">Campaigns go live and high-quality leads start flowing in.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#131314] border-2 border-[#2a2a2c] flex items-center justify-center text-xl font-bold text-brand-gray mb-6 transition-colors duration-300 hover:border-brand-lime hover:text-brand-lime">4</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Scale</h3>
+                    <p class="text-sm text-brand-gray">We optimize daily to lower your costs and increase your ROI.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="cta" class="text-center space-y-6 py-24 animate-fade-up relative z-10">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-[#2a2a2c] bg-[#131314]/80 text-brand-gray text-[10px] font-bold tracking-[0.2em] uppercase mb-2 backdrop-blur-sm">
+                Next Steps
+            </div>
+            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-tight">Let's Talk Growth</h2>
+            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed pb-6">Stop wasting time with generic agencies. Partner with a team that treats your revenue like their own.</p>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="inline-flex items-center justify-center gap-3 bg-brand-lime text-brand-bg font-bold text-lg py-5 px-10 rounded-full transition-all hover:scale-105 hover:">
+                LET'S TALK GROWTH
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14m-7-7l7 7-7 7"></path></svg>
+            </button>
+        </section>
+
     </div>
-    
     <!-- Intl Tel Input JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     
     <script src="script.js"></script>
 </body>
 </html>
+
 

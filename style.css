@@ -77,16 +77,13 @@ body {
         .radio-container:has(input:checked) {
             border-color: #d8fc4d;
             background: rgba(216, 252, 77, 0.08);
-            box-shadow: 0 0 12px rgba(216, 252, 77, 0.15);
         }
 
         /* Button hover effect */
         .btn-primary {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 14px rgba(216, 252, 77, 0.2);
         }
         .btn-primary:hover {
-            box-shadow: 0 8px 28px rgba(216, 252, 77, 0.4);
             transform: translateY(-2px);
         }
         .btn-primary:active {
